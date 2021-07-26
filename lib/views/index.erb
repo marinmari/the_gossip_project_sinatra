@@ -1,0 +1,18 @@
+<html>
+  <head> 
+    <title>The Gossip Projetc </title>
+  </head>
+  <body>
+    <h1> Hello ! </h1>
+    <p>A la recherche d'histoires croustillantes, elles arrivent, ne t'en fais pas. </p>
+    <a> En attendant, je te propose de nous dire ce que tu sais :<a>
+    <a href="/gossips/new/">Ajouter un portin</a>
+  </body>
+</html>
+
+
+<% gossips.each_with_index do |gossip,index| %>
+  <p>
+    <a href="/gossips/<%= (index+1) %>"><%= gossip.author %></a><br/>
+  </p>
+<% end %>

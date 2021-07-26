@@ -1,0 +1,8 @@
+<h1>      Page potins ! <h1>
+
+<% gossips.each do |gossip| %>
+  <p> Voici le potin n° <%= id%><br/>
+  Son auteur : <%= gossip.author %><br/>
+  Le contenu du potin : <%= gossip.content %>
+  </p>
+<% end %>

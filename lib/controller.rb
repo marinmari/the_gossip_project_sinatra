@@ -23,3 +23,4 @@ class ApplicationController < Sinatra::Base
     erb :show, locals: {id: params['id'].to_i, gossips: Gossip.find(params['id'].to_i)}
   end
 
+end

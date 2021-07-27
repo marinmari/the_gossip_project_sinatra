@@ -5,25 +5,21 @@ require 'gossip'
 Bundler.require
 
 class ApplicationController < Sinatra::Base
-  
+  #Affichage de la page index 
   get '/' do
     erb :index, locals: {gossips: Gossip.all}
   end  
-
+#Afichage du forulaire pour déposer un potin
   get '/gossips/new/' do
     erb :new_gossip
   end
-
+#Sauvegarde d'un potin via le formulaire
   post '/gossips/new/' do
     Gossip.new(params["gossip_author"], params["gossip_content"]).save
     redirect '/'
   end
-
+#affichage d'un potin selon l'id
   get '/gossips/:id' do
     erb :show, locals: {id: params['id'].to_i, gossips: Gossip.find(params['id'].to_i)}
-    # matches "GET /hello/foo" and "GET /hello/bar"
-    # params['name'] is 'foo' or 'bar'
-    #"Voici le numéro du potin que tu souhaites consulter : #{params['id']}!"
   end
 
-end

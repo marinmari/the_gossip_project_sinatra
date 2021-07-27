@@ -6,18 +6,18 @@ Bundler.require
 
 class Gossip 
   attr_accessor :author, :content
-
+#Initialisation de la classe gossip avec un content et un auteur
   def initialize(author, content)
     @author = author
     @content = content
   end
-
+#FOnciton save un potin
   def save
     CSV.open("./db/gossip.csv", "ab") do |csv|
       csv << [@author, @content]
     end
   end
-
+#fonction affichage de tous les potins
   def self.all
     all_gossips = []
     CSV.read("./db/gossip.csv").each do |csv_line|
@@ -25,7 +25,7 @@ class Gossip
     end
     return all_gossips
   end
-
+#fonction affichage / potin
   def self.find(id)
     gossips = Array.new #on créer une variable qui va enregistrer le potin à afficher sur la page
     CSV.read("./db/gossip.csv").each_with_index do |row, index| # FOnction index qui permet de ressortir uniquement la ligne avec l'index souhaité ()
